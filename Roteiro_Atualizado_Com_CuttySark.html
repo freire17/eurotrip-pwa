@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Roteiro de Viagem Detalhado: Londres, Escócia &amp; Bélgica</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+<style>
+        /* Custom Styles */
+        :root {
+            --primary-color: #1e3a8a; /* Dark Blue */
+            --secondary-color: #4f46e5; /* Indigo */
+            --accent-color: #db2777; /* Pink */
+            --light-bg: #f1f5f9; /* Slightly different light background */
+            --card-bg: #ffffff; /* White cards */
+            --text-dark: #1f2937; /* Darker Gray */
+            --text-medium: #4b5563; /* Medium Gray */
+            --text-light: #6b7280; /* Light Gray */
+            --border-color: #e5e7eb; /* Border color */
+        }
+        html {
+             scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-medium);
+            font-size: 16px;
+        }
+        /* Accordion Styles */
+        .day-section {
+            background-color: var(--card-bg);
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        .day-header {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+             transition: background-color 0.2s ease-in-out;
+        }
+         .day-header:hover {
+             background-color: #f8fafc;
+         }
+        .day-header h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 0;
+        }
+        .day-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+            padding: 0 1.5rem;
+            background-color: var(--card-bg);
+        }
+        .day-section.active .day-content {
+            max-height: 15000px; /* Increased significantly for more content */
+            padding: 1.5rem;
+            transition: max-height 0.8s ease-in-out, padding 0.8s ease-in-out; /* Slightly slower for more content */
+        }
+        .day-section.active .day-header {
+             border-bottom-color: transparent;
+        }
+        .day-section.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+        .toggle-icon {
+            transition: transform 0.5s ease-in-out;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-right: 0.5rem;
+            margin-top: 0.5rem;
+            border: 1px solid transparent;
+            text-align: center;
+            box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            font-size: 0.9rem;
+        }
+         .btn:hover {
+             transform: translateY(-2px);
+             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+         }
+        .btn-primary { background-color: #2563eb; color: white; }
+        .btn-primary:hover { background-color: #1d4ed8; }
+        .btn-secondary { background-color: #e5e7eb; color: var(--text-dark); border-color: #d1d5db; }
+        .btn-secondary:hover { background-color: #d1d5db; }
+        .btn-instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; }
+        .btn-instagram:hover { opacity: 0.9; }
+        .btn-maps { background-color: #34A853; color: white; }
+        .btn-maps:hover { background-color: #167a3a; }
+        .btn-web { background-color: var(--secondary-color); color: white; }
+        .btn-web:hover { background-color: #4f46e5; }
+        .btn-price { background-color: #f59e0b; color: white; cursor: default; } /* Amber for price */
+        .btn-price:hover { transform: none; box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); }
+
+        /* Activity Card Styles */
+        .activity-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 1.2rem; /* More padding */
+            margin-bottom: 1rem;
+        }
+        .activity-card h4 {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem; /* More space below title */
+            font-size: 1.05rem; /* Slightly larger */
+            display: flex;
+            align-items: center;
+        }
+         .activity-card h4 i { /* Icon before title */
+             margin-right: 0.5rem;
+             color: var(--primary-color);
+         }
+        .activity-card p {
+            color: var(--text-medium);
+            margin-bottom: 0.6rem; /* More space between paragraphs */
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+         .activity-card p strong {
+             color: var(--text-dark);
+             font-weight: 600;
+         }
+        /* Detail paragraphs */
+        .detail-item {
+            display: flex;
+            align-items: flex-start; /* Align icon top */
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+        }
+         .detail-item i {
+             margin-right: 0.5rem;
+             color: var(--secondary-color);
+             width: 16px; /* Fixed width for alignment */
+             text-align: center;
+             margin-top: 0.15rem; /* Adjust icon vertical position */
+         }
+        .curiosity {
+            font-style: italic;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border-left: 3px solid var(--accent-color); /* Pink accent */
+            padding-left: 0.75rem;
+            background-color: #fdf2f8; /* Light pink background */
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-radius: 0 0.375rem 0.375rem 0;
+        }
+        /* Restaurant suggestion card */
+        .restaurant-card {
+             background-color: #f0fdf4; /* Light green background */
+             border-left: 4px solid #22c55e; /* Green border */
+        }
+         .restaurant-card h4 i {
+             color: #16a34a; /* Darker green icon */
+         }
+
+        /* Navigation Tabs */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #d1d5db;
+            background-color: white;
+            border-radius: 0.5rem 0.5rem 0 0;
+            padding: 0.5rem 0.5rem 0 0.5rem;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+        }
+        .tab-button {
+            padding: 0.7rem 1rem;
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+            color: var(--text-medium);
+            font-weight: 500;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.3s ease;
+            border-radius: 0.375rem 0.375rem 0 0;
+            font-size: 0.9rem;
+            flex-grow: 1;
+            text-align: center;
+            white-space: nowrap; /* Prevent wrapping */
+        }
+        .tab-button.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+            background-color: #f1f5f9; /* Match body background */
+        }
+        .tab-button:hover:not(.active) {
+            background-color: #eef2ff;
+            color: var(--primary-color);
+        }
+        .tab-content {
+            display: none;
+             opacity: 0;
+             transition: opacity 0.5s ease-in-out;
+        }
+        .tab-content.active {
+            display: block;
+             opacity: 1;
+        }
+
+        /* Small note style */
+        .small-note {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem; /* More space */
+            font-style: italic;
+            background-color: #eef2ff;
+            padding: 0.75rem 1rem; /* More padding */
+            border-radius: 0.375rem;
+            border-left: 3px solid var(--secondary-color);
+        }
+
+        /* Scroll-to-top Button */
+        #scrollToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            padding: 10px 13px;
+            border-radius: 50%;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, opacity 0.3s, visibility 0.3s;
+        }
+        #scrollToTopBtn:hover { background-color: var(--secondary-color); }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body { font-size: 15px; }
+            .tabs { justify-content: flex-start; overflow-x: auto; padding-bottom: 2px;} /* Allow horizontal scroll */
+            .tab-button { padding: 0.6rem 0.7rem; font-size: 0.8rem; flex-grow: 0; flex-shrink: 0; } /* Don't grow, allow shrink */
+            .day-header h2 { font-size: 1.15rem; }
+            .toggle-icon { font-size: 1rem; }
+            .btn { padding: 0.5rem 0.8rem; font-size: 0.85rem; }
+            .activity-card { padding: 1rem; }
+            .activity-card h4 { font-size: 1rem; }
+            .activity-card p { font-size: 0.9rem; line-height: 1.4; }
+             .detail-item { font-size: 0.85rem; }
+            .activity-card .curiosity { font-size: 0.8rem; }
+            #scrollToTopBtn { bottom: 15px; right: 15px; padding: 8px 11px; font-size: 14px; }
+            .day-header { padding: 1rem; }
+            .day-section.active .day-content { padding: 1rem; }
+        }
+         @media (max-width: 480px) {
+             .tab-button { font-size: 0.75rem; padding: 0.5rem 0.6rem;}
+             .day-header h2 { font-size: 1.05rem; }
+             .btn { padding: 0.4rem 0.7rem; font-size: 0.8rem; }
+             .activity-card h4 { font-size: 0.95rem; }
+             .activity-card p { font-size: 0.85rem; }
+             .detail-item { font-size: 0.8rem; }
+         }
+    </style>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+</head>
+<body class="p-2 md:p-8"> <header class="text-center mb-6 md:mb-12"> <h1 class="text-2xl md:text-4xl font-bold text-indigo-700 mb-2">🌍 Roteiro de Viagem Interativo ✈️</h1>
+<p class="text-md md:text-lg text-gray-600">🇬🇧 Londres | 🏴󠁧󠁢󠁳󠁣󠁴󠁿 Edimburgo | 🇧🇪 Bruxelas, Bruges &amp; Ghent</p>
+<p class="text-sm md:text-md text-gray-500">🗓️ 17 de Abril a 04 de Maio de 2025</p>
+</header>
+<div class="tabs">
+<button class="tab-button active" onclick="showTab('info')"><i class="fas fa-info-circle mr-1"></i>Info</button>
+<button class="tab-button" onclick="showTab('hospedagem')"><i class="fas fa-hotel mr-1"></i>Hosp/Transp</button>
+<button class="tab-button" onclick="showTab('london')"><i class="fas fa-city mr-1"></i>Londres 🇬🇧</button>
+<button class="tab-button" onclick="showTab('edinburgh')"><i class="fas fa-chess-rook mr-1"></i>Edimburgo 🏴󠁧󠁢󠁳󠁣󠁴󠁿</button>
+<button class="tab-button" onclick="showTab('brussels')"><i class="fas fa-atom mr-1"></i>Bruxelas 🇧🇪</button>
+<button class="tab-button" onclick="showTab('bruges')"><i class="fas fa-bridge mr-1"></i>Bruges 🇧🇪</button>
+<button class="tab-button" onclick="showTab('ghent')"><i class="fas fa-church mr-1"></i>Ghent 🇧🇪</button>
+<button class="tab-button" onclick="showTab('retorno')"><i class="fas fa-plane-departure mr-1"></i>Retorno 🇧🇷</button>
+</div>
+<main>
+<div class="tab-content active" id="info">
+<div class="day-section active">
+<div class="day-header" onclick="toggleSection(this.parentElement)">
+<h2><i class="fas fa-info-circle mr-2"></i>Informações Essenciais</h2>
+<i class="fas fa-chevron-down toggle-icon"></i>
+</div>
+<div class="day-content">
+<p class="mb-2"><strong>🗓️ Datas da Viagem:</strong> 17 de Abril a 04 de Maio de 2025</p>
+<p><strong>📍 Locais:</strong> Londres (🇬🇧), Edimburgo (🏴󠁧󠁢󠁳󠁣󠁴󠁿), Bruxelas (🇧🇪), Bruges (🇧🇪), Ghent (🇧🇪)</p>
+<p class="mt-4"><strong>💡 Dica:</strong> Use este roteiro como guia, mas sinta-se à vontade para adaptar os dias conforme seu ritmo e interesses! Verifique sempre os horários de funcionamento e a necessidade de reserva antecipada, especialmente para atrações populares. Os preços indicados são aproximados para adulto e podem variar.</p>
+<p class="mt-2"><strong>🔌 Tomadas:</strong> Reino Unido usa Tipo G (3 pinos retangulares). Bélgica usa Tipo E (2 pinos redondos + terra). Leve adaptadores universais.</p>
+<p class="mt-2"><strong>💰 Moeda:</strong> Reino Unido usa Libra Esterlina (£, GBP). Bélgica usa Euro (€, EUR).</p>
+</div>
+</div>
+<div class="day-section">
+<div class="day-header" onclick="toggleSection(this.parentElement)">
+<h2><i class="fas fa-piggy-bank mr-2"></i>Caixas Eletrônicos (ATMs)</h2>
+<i class="fas fa-chevron-down toggle-icon"></i>
+</div>
+<div class="day-content">
+<p>É sempre bom ter algum dinheiro local em espécie. Use cartões de débito/crédito internacionais ou cartões pré-pagos de viagem. ATMs são comuns, mas verifique as taxas do seu banco.</p>
+<div class="activity-card mb-4">
+<h4>🏧 ATMs perto dos Hotéis</h4>
+<p class="detail-item"><i class="fa-solid fa-map-location-dot"></i><strong>Londres (The Marble Arch by Thistle):</strong> <a class="btn btn-maps btn-sm" href="https://www.google.com/maps/place/The+Marble+Arch+Hotel+by+Thistle/@51.5140044,-0.1577162,16.55z/data=!4m9!3m8!1s0x4876053348a6717b:0x402654ce968fb74d!5m2!4m1!1i2!8m2!3d51.5141627!4d-0.1566472!16s%2Fg%2F1tjdqtd9?entry=ttu&amp;g_ep=EgoyMDI1MDQwOS4wIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D" target="_blank"><i class="fas fa-search mr-1"></i>Buscar ATMs Próximos</a></p>
+<p class="detail-item"><i class="fa-solid fa-map-location-dot"></i><strong>Edimburgo (Holiday Inn Express City Centre):</strong> <a class="btn btn-maps btn-sm" href="https://www.google.com/maps/place/Bank+of+Scotland/@55.9570277,-3.1878649" target="_blank"><i class="fas fa-search mr-1"></i>Buscar ATMs Próximos</a></p>
+<p class="detail-item"><i class="fa-solid fa-map-location-dot"></i><strong>Bruxelas (Marriott Grand Place):</strong> <a class="btn btn-maps btn-sm" href="https://www.google.com/maps/place/Belfius+Bank/@50.8472433,4.3524058" target="_blank"><i class="fas fa-search mr-1"></i>Buscar ATMs Próximos</a></p>
+<p class="curiosity">ℹ️ Dê preferência a ATMs localizados dentro ou na fachada de bancos conhecidos para maior segurança e, às vezes, melhores taxas de câmbio do que ATMs independentes.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="tab-content" id="hospedagem">
+<div class="day-section">
+<div class="day-header" onclick="toggleSection(this.parentElement)">
+<h2><i class="fas fa-hotel mr-2"></i>Detalhes de Hospedagem e Transporte</h2>
+<i class="fas fa-chevron-down toggle-icon"></i>
+</div>
+<div class="day-content">
+<div class="activity-card mb-4">
+<h4><i class="fas fa-hotel"></i>LONDRES (🇬🇧) - Até 23/04 &amp; Noite de 27/04</h4>
+<p><strong>Hotel:</strong> The Marble Arch Hotel by Thistle</p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i>Bryanston St, Marylebone, London W1H 7EH</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/The+Marble+Arch+Hotel+by+Thistle/@51.5141627,-0.1566472" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.thistle.com/marble-arch" target="_blank"><i class="fas fa-globe mr-1"></i>Website Hotel</a>
+<p class="curiosity">ℹ️ Excelente localização perto de Marble Arch (Central Line), Oxford Street e Hyde Park. Fácil acesso a ônibus.</p>
+</div>
+<div class="activity-card mb-4">
+<h4><i class="fas fa-train"></i>LONDRES 🇬🇧 → EDIMBURGO 🏴󠁧󠁢󠁳󠁣󠁴󠁿 – 23 de Abril</h4>
+<p><strong>Transporte:</strong> Trem</p>
+<p class="detail-item"><i class="fas fa-clock"></i><strong>Saída de Londres:</strong> 9:30</p>
+<p class="detail-item"><i class="fas fa-train"></i><strong>Estação Partida:</strong> Verificar passagem (Geralmente King's Cross ou Euston)</p>
+<p class="detail-item"><i class="fas fa-building"></i><strong>Companhia:</strong> Verificar passagem (LNER, Avanti West Coast, etc.)</p>
+<p class="detail-item"><i class="fas fa-hourglass-half"></i><strong>Duração:</strong> ~4-5 horas</p>
+<a class="btn btn-secondary" href="https://www.thetrainline.com/" target="_blank"><i class="fas fa-ticket-alt mr-1"></i>Ver/Comprar Passagens</a>
+<p class="curiosity">💡 A viagem oferece belas paisagens, especialmente ao norte. LNER geralmente sai de King's Cross, Avanti de Euston.</p>
+</div>
+<div class="activity-card mb-4">
+<h4><i class="fas fa-hotel"></i>EDIMBURGO (🏴󠁧󠁢󠁳󠁣󠁴󠁿) - 23 a 27 de Abril</h4>
+<p><strong>Hotel:</strong> Holiday Inn Express - Edinburgh City Centre by IHG</p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i>Picardy Place, Edinburgh EH1 3JT</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Holiday+Inn+Express+Edinburgh+City+Centre/@55.957267,-3.188748" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.ihg.com/holidayinnexpress/hotels/gb/en/edinburgh/edbct/hoteldetail" target="_blank"><i class="fas fa-globe mr-1"></i>Website Hotel</a>
+<p class="curiosity">ℹ️ Localizado na New Town, perto da estação de tram St Andrew Square (conexão com aeroporto) e a uma caminhada da estação de trem Waverley e da Old Town.</p>
+</div>
+<div class="activity-card mb-4">
+<h4><i class="fas fa-train"></i>EDIMBURGO 🏴󠁧󠁢󠁳󠁣󠁴󠁿 → LONDRES 🇬🇧 – 27 de Abril</h4>
+<p><strong>Transporte:</strong> Trem</p>
+<p class="detail-item"><i class="fas fa-clock"></i><strong>Saída de Edimburgo:</strong> 10:54</p>
+<p class="detail-item"><i class="fas fa-train"></i><strong>Estação Partida:</strong> Edinburgh Waverley</p>
+<p class="detail-item"><i class="fas fa-building"></i><strong>Companhia:</strong> Verificar passagem</p>
+<p class="detail-item"><i class="fas fa-train"></i><strong>Estação Chegada:</strong> Verificar passagem (Geralmente King's Cross ou Euston)</p>
+</div>
+<div class="activity-card mb-4">
+<h4><i class="fas fa-train"></i>LONDRES 🇬🇧 → BRUXELAS 🇧🇪 – 28 de Abril</h4>
+<p><strong>Transporte:</strong> Trem Eurostar</p>
+<p class="detail-item"><i class="fas fa-route"></i><strong>Rota:</strong> Londres St Pancras Int'l → Bruxelas Midi (Brussel-Zuid)</p>
+<p class="detail-item"><i class="fas fa-clock"></i><strong>Horário:</strong> 07:04 (Chegar 60-90 min antes!)</p>
+<p class="detail-item"><i class="fas fa-euro-sign"></i><strong>Valor médio:</strong> €60-€90+ (Reservar com antecedência!)</p>
+<a class="btn btn-web" href="https://www.eurostar.com/" target="_blank"><i class="fas fa-ticket-alt mr-1"></i>Reservar Eurostar</a>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/St+Pancras+International/@51.5315806,-0.1263983" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Mapa St Pancras</a>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Brussels-South+Railway+Station/@50.835638,4.336893" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Mapa Bruxelas Midi</a>
+<a class="btn btn-secondary" href="https://www.nationalrail.co.uk/stations/stp/details.html" target="_blank"><i class="fas fa-info-circle mr-1"></i>Info St Pancras</a>
+<a class="btn btn-secondary" href="https://www.belgiantrain.be/en/stations-info/bruxelles-midi" target="_blank"><i class="fas fa-info-circle mr-1"></i>Info Bruxelas Midi</a>
+<p class="detail-item"><i class="fas fa-subway"></i><strong>Como chegar em St Pancras:</strong> Metrô (Piccadilly, Victoria, Northern, Metropolitan, Circle, H&amp;C), ônibus, trens.</p>
+<p class="curiosity">ℹ️ St Pancras é uma estação vitoriana magnífica, conectada a King's Cross. A imigração para a Bélgica é feita em Londres.</p>
+</div>
+<div class="activity-card mb-4">
+<h4><i class="fas fa-hotel"></i>BRUXELAS (🇧🇪) - 28 de Abril a 03 de Maio</h4>
+<p><strong>Hotel:</strong> Brussels Marriott Hotel Grand Place</p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i>Rue Auguste Orts 3-7, 1000 Bruxelles</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Brussels+Marriott+Hotel+Grand+Place/@50.8484635,4.3494066" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.marriott.com/en-us/hotels/brudt-brussels-marriott-hotel-grand-place/overview/" target="_blank"><i class="fas fa-globe mr-1"></i>Website Hotel</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/brusselsmarriottgrandplace/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ Localização imbatível, a poucos passos da Grand Place e da estação de metrô Bourse/Beurs.</p>
+</div>
+<div class="activity-card mb-4">
+<h4><i class="fas fa-plane-departure"></i>BRUXELAS 🇧🇪 → BRASIL 🇧🇷 – 03 de Maio</h4>
+<p><strong>Transporte:</strong> Voo</p>
+<p class="detail-item"><i class="fas fa-clock"></i><strong>Saída:</strong> 19:55 do Aeroporto de Bruxelas (BRU)</p>
+<p class="detail-item"><i class="fas fa-exchange-alt"></i><strong>Escala:</strong> Londres (Verificar LHR ou LGW)</p>
+<p class="detail-item"><i class="fas fa-calendar-check"></i><strong>Chegada ao Brasil:</strong> 04 de Maio</p>
+<p class="detail-item"><i class="fas fa-train"></i><strong>Como chegar no Aeroporto (BRU):</strong> Trem direto (Airport City Express) das estações Brussels Midi, Centraal ou Nord (~20 min).</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Brussels+Airport/@50.9009986,4.4846734" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Aeroporto BRU</a>
+<a class="btn btn-secondary" href="https://www.brusselsairport.be/en/passengers/access-parking/train" target="_blank"><i class="fas fa-train mr-1"></i>Info Trem Aeroporto</a>
+</div>
+</div>
+</div>
+</div>
+<div class="tab-content" id="london">
+<div class="day-section">
+<div class="day-header" onclick="toggleSection(this.parentElement)">
+<h2>📅 17 de Abril: LONDRES 🇬🇧 - Chegada e Primeira Impressão</h2>
+<i class="fas fa-chevron-down toggle-icon"></i>
+</div>
+<div class="day-content">
+<p class="mb-4">Chegada, deslocamento, check-in no The Marble Arch Hotel by Thistle.</p>
+<p class="small-note">Sugestões flexíveis para os dias 17-22. Adapte ao seu ritmo!</p>
+<h4 class="font-semibold mb-2 text-lg text-blue-700"><i class="fas fa-shoe-prints"></i> Sugestões Iniciais (Perto do Hotel):</h4>
+<div class="activity-card">
+<h4><i class="fas fa-tree"></i> Passeio por Hyde Park</h4>
+<p>Caminhe pelo parque, veja o lago Serpentine, o Memorial da Diana, talvez alugue um pedalinho.</p>
+<p class="detail-item"><i class="fas fa-subway"></i> Marble Arch, Hyde Park Corner, Lancaster Gate, Knightsbridge.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Vista do Serpentine com os cisnes; perto do Albert Memorial (lado oposto do parque).</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Hyde+Park/@51.5072682,-0.1657303" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Hyde Park</a>
+<p class="curiosity">ℹ️ Hyde Park era originalmente um terreno de caça de Henrique VIII. Hoje, recebe grandes eventos e é um refúgio verde na cidade.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-store"></i> Oxford Street &amp; Selfridges</h4>
+<p>Explore a rua de compras mais famosa e a icônica loja Selfridges.</p>
+<p class="detail-item"><i class="fas fa-subway"></i> Marble Arch, Bond Street, Oxford Circus, Tottenham Court Road.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Fachada da Selfridges; o movimento da rua (cuidado!).</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Oxford+Street/@51.5143759,-0.1447261" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Oxford St</a>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Selfridges+London/@51.5134974,-0.1526774" target="_blank"><i class="fas fa-store mr-1"></i>Selfridges</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/theofficialselfridges/" target="_blank"><i class="fab fa-instagram mr-1"></i>Selfridges Insta</a>
+<p class="curiosity">ℹ️ Oxford Street tem mais de 300 lojas e é uma das ruas de compras mais movimentadas do mundo.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-landmark"></i> Marble Arch &amp; Speaker's Corner</h4>
+<p>Veja o arco triunfal que originalmente era entrada do Palácio de Buckingham e o canto da livre expressão.</p>
+<p class="detail-item"><i class="fas fa-subway"></i> Marble Arch.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> O arco em si; oradores no Speaker's Corner (domingos).</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Marble+Arch/@51.5138455,-0.1585401" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Marble Arch</a>
+<p class="curiosity">ℹ️ O Speaker's Corner é um símbolo da liberdade de expressão desde 1872.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-palette"></i> Wallace Collection</h4>
+<p>Museu gratuito com coleção de arte em uma mansão histórica.</p>
+<p class="detail-item"><i class="fas fa-subway"></i> Bond Street, Baker Street.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> O pátio interno coberto; detalhes das salas suntuosas.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/The+Wallace+Collection/@51.5175807,-0.1549305" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.wallacecollection.org/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/wallacemuseum/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ A coleção foi reunida por cinco gerações de uma família aristocrática e doada à nação em 1897.</p>
+</div>
+<div class="activity-card restaurant-card">
+<h4><i class="fas fa-utensils"></i> Sugestões de Refeição/Pub (Marylebone/Marble Arch)</h4>
+<p><strong>The Grazing Goat:</strong> Gastropub elegante em Marylebone. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/The+Grazing+Goat/@51.5153946,-0.1587274" target="_blank">[Mapa]</a></p>
+<p><strong>Dishoom Carnaby (um pouco mais longe):</strong> Comida indiana popular e deliciosa (pode ter fila). <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Dishoom+Carnaby/@51.5136577,-0.1387591" target="_blank">[Mapa]</a></p>
+<p><strong>Opções na St Christopher's Place:</strong> Área charmosa com vários restaurantes perto de Oxford St. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/St+Christopher's+Place/@51.5142956,-0.152298" target="_blank">[Mapa]</a></p>
+</div>
+</div>
+</div>
+<div class="day-section">
+<div class="day-header" onclick="toggleSection(this.parentElement)">
+<h2>📅 18 de Abril: LONDRES 🇬🇧 - Realeza, Política e Parques</h2>
+<i class="fas fa-chevron-down toggle-icon"></i>
+</div>
+<div class="day-content">
+<p class="small-note">Sugestões flexíveis. Combine atrações na área de Westminster/St James's.</p>
+<h4 class="font-semibold mb-2 text-lg text-blue-700"><i class="fas fa-shoe-prints"></i> Sugestões para hoje:</h4>
+<div class="activity-card">
+<h4><i class="fas fa-crown"></i> Palácio de Buckingham &amp; Troca da Guarda</h4>
+<p>Residência oficial do monarca. Assista à Troca da Guarda (verificar dias/horários!).</p>
+<p class="detail-item"><i class="fas fa-subway"></i> Victoria, Green Park, Hyde Park Corner, St James's Park.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Em frente aos portões; durante a cerimônia (chegue cedo para bom lugar); do St James's Park.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Buckingham+Palace/@51.501364,-0.14189" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.rct.uk/visit/buckingham-palace" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-secondary" href="https://changing-guard.com/dates-buckingham-palace.html" target="_blank"><i class="fas fa-calendar-alt mr-1"></i>Horários Troca</a>
+<p class="curiosity">ℹ️ A bandeira hasteada indica se o Rei está no palácio: o Royal Standard (bandeira pessoal) se ele estiver, a Union Jack se não estiver.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-leaf"></i> Passeio por Green Park &amp; St. James's Park</h4>
+<p>Caminhe pelos belos parques reais, veja o lago com pelicanos em St James's.</p>
+<p class="detail-item"><i class="fas fa-subway"></i> Green Park, St James's Park, Westminster.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Ponte sobre o lago em St James's Park com vista para Buckingham ou Horse Guards; pelicanos.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Green+Park/@51.5049182,-0.1427224" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Green Park</a>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/St+James's+Park/@51.502221,-0.134252" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>St. James's Park</a>
+<p class="curiosity">ℹ️ St James's Park é o mais antigo dos parques reais de Londres. Os pelicanos foram um presente do embaixador russo em 1664.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-landmark"></i> Casas do Parlamento &amp; Big Ben</h4>
+<p>Admire o ícone arquitetônico gótico. O nome "Big Ben" refere-se ao sino, não à torre (Elizabeth Tower).</p>
+<p class="detail-item"><i class="fas fa-subway"></i> Westminster.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Da Westminster Bridge; do outro lado do rio (South Bank); da Parliament Square.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Houses+of+Parliament/@51.4994794,-0.1248091" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.parliament.uk/visiting/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/ukparliament/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ O Palácio de Westminster (nome oficial) contém mais de 1.100 salas e 3 km de corredores.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-church"></i> Abadia de Westminster</h4>
+<p>Local de coroações desde 1066 e local de descanso de monarcas e figuras ilustres. <span class="btn btn-price btn-sm">~£29</span></p>
+<p class="detail-item"><i class="fas fa-subway"></i> Westminster.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Fachada Oeste; interior (onde permitido); Claustros.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Westminster+Abbey/@51.4992921,-0.12731" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.westminster-abbey.org/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/westminsterabbeylondon/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ Contém o Trono da Coroação (Coronation Chair) e o Túmulo do Soldado Desconhecido.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-user-secret"></i> Churchill War Rooms</h4>
+<p>Explore o bunker secreto da II Guerra Mundial. <span class="btn btn-price btn-sm">~£32</span></p>
+<p class="detail-item"><i class="fas fa-subway"></i> Westminster, St James's Park.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Churchill+War+Rooms/@51.5021902,-0.1290743" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.iwm.org.uk/visits/churchill-war-rooms" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/imperialwarmuseums/" target="_blank"><i class="fab fa-instagram mr-1"></i>IWM Insta</a>
+<p class="curiosity">ℹ️ O local foi usado entre 1939 e 1945 e mantido em segredo até décadas depois.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-horse-head"></i> Horse Guards Parade &amp; Whitehall</h4>
+<p>Veja a troca da guarda montada (verificar horários) e caminhe pela avenida dos ministérios até Downing Street.</p>
+<p class="detail-item"><i class="fas fa-subway"></i> Westminster, Charing Cross, Embankment.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Guardas montados nos postos; a parada durante a troca.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Whitehall/@51.5043503,-0.1258915" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Whitehall</a>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Horse+Guards+Parade/@51.5046146,-0.1273884" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Horse Guards</a>
+<p class="curiosity">ℹ️ A Horse Guards Parade era originalmente o local de torneios na época de Henrique VIII.</p>
+</div>
+<div class="activity-card restaurant-card">
+<h4><i class="fas fa-utensils"></i> Sugestões de Refeição/Pub (Westminster)</h4>
+<p><strong>The Red Lion:</strong> Pub tradicional vitoriano perto de Downing St. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/The+Red+Lion/@51.5034724,-0.1264013" target="_blank">[Mapa]</a></p>
+<p><strong>St. Stephen's Tavern:</strong> Pub histórico em frente ao Big Ben. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/St+Stephen's+Tavern/@51.5006882,-0.1257542" target="_blank">[Mapa]</a></p>
+<p><strong>Café in the Crypt (St Martin-in-the-Fields):</strong> Café atmosférico na cripta da igreja em Trafalgar Sq (próximo). <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Cafe+in+the+Crypt/@51.5081374,-0.1278453" target="_blank">[Mapa]</a></p>
+</div>
+</div>
+</div>
+
+<div class="day-section">
+<div class="day-header" onclick="toggleSection(this.parentElement)">
+<h2>📅 19 de Abril: LONDRES 🇬🇧 – South Bank, Shakespeare & Cutty Sark</h2>
+<i class="fas fa-chevron-down toggle-icon"></i>
+</div>
+<div class="day-content">
+<p class="small-note">Dia ajustado para incluir a visita ao navio Cutty Sark pela manhã e o espetáculo Macbeth à tarde. Aproveite!</p>
+
+<h4 class="font-semibold mb-2 text-lg text-blue-700"><i class="fas fa-ship"></i> Manhã – Cutty Sark & Greenwich</h4>
+<div class="activity-card">
+<h4><i class="fas fa-ship"></i> Cutty Sark (Greenwich)</h4>
+<p>Visite o famoso navio do século XIX, um dos últimos grandes clippers a velejar entre o Reino Unido e a China. Explore o convés, a estrutura preservada e o museu interativo. <span class="btn btn-price btn-sm">~£20</span> (Reserve online!)</p>
+<p class="detail-item"><i class="fas fa-clock"></i>Horário sugerido: 9h30 - 11h</p>
+<p class="detail-item"><i class="fas fa-train"></i>Como chegar: DLR até Cutty Sark for Maritime Greenwich (partida da estação Bank, próxima à Central Line)</p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i>King William Walk, London SE10 9HT</p>
+<a class="btn btn-web" href="https://www.rmg.co.uk/cutty-sark/plan-your-visit" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Cutty+Sark/@51.4821111,-0.0097207" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<p class="curiosity">ℹ️ O Cutty Sark foi o navio mais rápido de sua época e hoje é um ícone marítimo preservado no coração de Greenwich.</p>
+</div>
+
+<h4 class="font-semibold mb-2 text-lg text-blue-700"><i class="fas fa-utensils"></i> Meio-dia – Almoço e Deslocamento</h4>
+<p class="detail-item"><i class="fas fa-utensils"></i><strong>Sugestão:</strong> Almoce em Greenwich Market (comida de rua, pães artesanais, culinária internacional) ou leve um lanche para comer no trajeto.</p>
+<p class="detail-item"><i class="fas fa-ship"></i><strong>Transporte:</strong> Pegue um barco Thames Clippers (Uber Boat) de Greenwich Pier até Bankside Pier (40 min, vista incrível da cidade!)</p>
+
+<h4 class="font-semibold mb-2 text-lg text-blue-700"><i class="fas fa-theater-masks"></i> 14h – Espetáculo no Shakespeare’s Globe</h4>
+<div class="activity-card">
+<h4><i class="fas fa-theater-masks"></i> Macbeth – Shakespeare’s Globe</h4>
+<p>Espetáculo teatral no autêntico palco elisabetano. Duração: 1h30</p>
+<p class="detail-item"><i class="fas fa-ticket-alt"></i>Ingresso já comprado</p>
+<p class="detail-item"><i class="fas fa-clock"></i>Horário: 14h às 15h30</p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i>21 New Globe Walk, SE1 9DT</p>
+<a class="btn btn-web" href="https://www.shakespearesglobe.com/whats-on/macbeth/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Shakespeare's+Globe/@51.5080955,-0.0965755" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+</div>
+
+<h4 class="font-semibold mb-2 text-lg text-blue-700"><i class="fas fa-walking"></i> Tarde – Caminhada Leve (Opcional)</h4>
+<p class="detail-item"><i class="fas fa-walking"></i>Após a peça, caminhe pela região da South Bank ou finalize o dia com um drink com vista no Sky Garden ou no bar do OXO Tower.</p>
+
+</div>
+</div>
+
+</div>
+<div class="day-section">
+<div class="day-header" onclick="toggleSection(this.parentElement)">
+<h2>📅 20 de Abril: LONDRES 🇬🇧 - Museus (South Kensington)</h2>
+<i class="fas fa-chevron-down toggle-icon"></i>
+</div>
+<div class="day-content">
+<p class="small-note">Sugestões flexíveis. Dedique o dia a esta área rica em museus gratuitos (reserve horário online)!</p>
+<h4 class="font-semibold mb-2 text-lg text-blue-700"><i class="fas fa-university"></i> Sugestões para hoje:</h4>
+<div class="activity-card">
+<h4><i class="fas fa-bone"></i> Museu de História Natural</h4>
+<p>Dinossauros, baleia azul, galeria da Terra (gratuito, reserve horário).</p>
+<p class="detail-item"><i class="fas fa-subway"></i> South Kensington.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Esqueleto da baleia no Hintze Hall; T-Rex animatrônico; fachada do edifício Waterhouse.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Natural+History+Museum/@51.496715,-0.176367" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.nhm.ac.uk/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/natural_history_museum/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ O edifício em si é uma obra-prima da arquitetura românica, com muitos detalhes de animais e plantas esculpidos.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-rocket"></i> Science Museum</h4>
+<p>Ciência interativa, tecnologia, espaço (gratuito, reserve horário).</p>
+<p class="detail-item"><i class="fas fa-subway"></i> South Kensington.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Science+Museum/@51.4978099,-0.1745233" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.sciencemuseum.org.uk/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/sciencemuseum/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ Possui a cápsula de comando da Apollo 10 e o motor a vapor mais antigo do mundo.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-gem"></i> Victoria and Albert Museum (V&amp;A)</h4>
+<p>Arte, design, moda, joias (gratuito, reserve horário).</p>
+<p class="detail-item"><i class="fas fa-subway"></i> South Kensington.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Pátio John Madejski Garden; Salas de Gesso (Cast Courts); Vitrais; Café do museu (salas Morris, Gamble e Poynter).</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Victoria+and+Albert+Museum/@51.4966395,-0.1721806" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.vam.ac.uk/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/vamuseum/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ É o maior museu de artes aplicadas, decorativas e design do mundo, com mais de 2.8 milhões de objetos.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-music"></i> Royal Albert Hall (Exterior/Tour)</h4>
+<p>Admire a arquitetura da famosa casa de concertos. Tours internos disponíveis <span class="btn btn-price btn-sm">~£18</span>.</p>
+<p class="detail-item"><i class="fas fa-subway"></i> South Kensington, Knightsbridge.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Bath+Abbey/@51.381438,-2.359845" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.royalalberthall.com/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/royalalberthall/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ Inaugurado pela Rainha Victoria em 1871 em memória de seu marido, Príncipe Albert.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-shopping-bag"></i> Compras na Harrods</h4>
+<p>Visite a luxuosa loja de departamentos.</p>
+<p class="detail-item"><i class="fas fa-subway"></i> Knightsbridge.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Windsor+Castle/@51.4838944,-0.6044026" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.harrods.com/en-gb/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/harrods/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ Famosa por sua decoração extravagante (especialmente a Sala Egípcia) e seu lema "Omnia Omnibus Ubique" (Tudo para Todos, em Todo Lugar).</p>
+</div>
+<div class="activity-card restaurant-card">
+<h4><i class="fas fa-utensils"></i> Sugestões de Refeição/Pub (South Kensington)</h4>
+<p><strong>The Hereford Arms:</strong> Pub tradicional com boa comida perto de Gloucester Road. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/The+Hereford+Arms/@51.4938505,-0.1827386" target="_blank">[Mapa]</a></p>
+<p><strong>V&amp;A Café:</strong> Almoço ou chá da tarde nas belas salas históricas do museu.</p>
+<p><strong>Comptoir Libanais:</strong> Comida libanesa colorida e saborosa. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Comptoir+Libanais/@51.4940719,-0.1741801" target="_blank">[Mapa]</a></p>
+<p><strong>Muriel's Kitchen:</strong> Comida caseira e ambiente acolhedor. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Muriel's+Kitchen/@51.494388,-0.1742995" target="_blank">[Mapa]</a></p>
+</div>
+</div>
+</div>
+<div class="day-section">
+<div class="day-header" onclick="toggleSection(this.parentElement)">
+<h2>📅 21 de Abril: LONDRES 🇬🇧 - Bate-volta a Stonehenge</h2>
+<i class="fas fa-chevron-down toggle-icon"></i>
+</div>
+<div class="day-content">
+<p class="small-note">Dia dedicado a uma viagem fora de Londres. Planeje com antecedência!</p>
+<h4 class="font-semibold mb-2 text-lg text-blue-700"><i class="fas fa-bus-alt"></i> Opção Principal: Stonehenge (e talvez Bath/Salisbury)</h4>
+<div class="activity-card">
+<h4><i class="fas fa-route"></i> Opções de Transporte</h4>
+<p><strong>1. Alugar Carro:</strong> Viagem de ~1.5-2h. Permite flexibilidade. <span class="text-red-600 font-semibold">Lembre-se: dirige-se pela esquerda!</span></p>
+<p class="detail-item"><i class="fas fa-car"></i> <strong>Locadoras (Marble Arch/Paddington):</strong> Hertz, Avis, Europcar, etc. <a class="btn btn-secondary btn-sm" href="https://www.google.com/maps/place/Marble+Arch/@51.5138455,-0.1585401" target="_blank"><i class="fas fa-search mr-1"></i>Pesquisar</a></p>
+<p><strong>2. Tour Organizado:</strong> Empresas como Viator, GetYourGuide oferecem tours de 1 dia combinando locais. <a class="btn btn-secondary btn-sm" href="https://www.google.com/search?q=stonehenge+day+tour+from+london" target="_blank"><i class="fas fa-search mr-1"></i>Pesquisar Tours</a></p>
+<p><strong>3. Trem + Ônibus:</strong> Trem London Waterloo → Salisbury (~1.5h), depois ônibus "The Stonehenge Tour" ou táxi (~30 min). <a class="btn btn-secondary btn-sm" href="https://www.thestonehengetour.info/" target="_blank"><i class="fas fa-bus mr-1"></i>Ônibus Salisbury</a></p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-circle"></i> Visita a Stonehenge</h4>
+<p>Explore o círculo de pedras pré-histórico. Ingresso inclui centro de visitantes e transporte até as pedras. <span class="btn btn-price btn-sm">~£26+</span> (Reserve online!)</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Ao longo do caminho que circunda as pedras; com o sol nascendo/se pondo (requer tours especiais); do centro de visitantes com as pedras ao fundo.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Pulteney+Bridge/@51.383232,-2.358928" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.english-heritage.org.uk/visit/places/stonehenge/" target="_blank"><i class="fas fa-globe mr-1"></i>Website (Reservas)</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/englishheritage/" target="_blank"><i class="fab fa-instagram mr-1"></i>Insta EH</a>
+<p class="curiosity">ℹ️ Construído em fases entre 3000 a.C. e 1600 a.C., sua finalidade exata (templo, observatório, cemitério) ainda é debatida.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-church"></i> Visita a Salisbury (Opcional)</h4>
+<p>Combine com Stonehenge. Visite a Catedral gótica com o pináculo mais alto da Inglaterra e uma cópia da Magna Carta.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Catedral vista do gramado; interior da catedral; claustros.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Salisbury+Cathedral/@51.0648414,-1.7974472" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Salisbury Cathedral</a>
+<a class="btn btn-web" href="https://www.salisburycathedral.org.uk/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/salisburycathedral/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ A Catedral de Salisbury foi construída em apenas 38 anos (1220-1258), um feito notável para a época.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-bath"></i> Visita a Bath (Alternativa/Combinação)</h4>
+<p>Combine com Stonehenge (dia longo). Explore a cidade georgiana e os Banhos Romanos. <span class="btn btn-price btn-sm">~£29 (Roman Baths)</span></p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Royal Crescent; Pulteney Bridge; os Banhos Romanos.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/The+Roman+Baths/@51.381051,-2.3599102" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Roman Baths</a>
+<a class="btn btn-web" href="https://www.romanbaths.co.uk/" target="_blank"><i class="fas fa-globe mr-1"></i>Website Roman Baths</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/romanbathsbath/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ Bath é a única cidade do Reino Unido inteiramente designada Patrimônio Mundial da UNESCO.</p>
+</div>
+<h4 class="font-semibold mb-2 text-lg text-blue-700"><i class="fas fa-undo"></i> Alternativa (se não for a Stonehenge):</h4>
+<div class="activity-card">
+<h4><i class="fas fa-landmark"></i> Torre de Londres &amp; Joias da Coroa</h4>
+<p>Explore a fortaleza histórica, veja as Joias da Coroa e os famosos Beefeaters. <span class="btn btn-price btn-sm">~£35</span> (Reserve online!).</p>
+<p class="detail-item"><i class="fas fa-subway"></i> Tower Hill.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Com a Tower Bridge ao fundo; com um Beefeater (peça permissão!); a White Tower.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Tower+of+London/@51.5081124,-0.0759493" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.hrp.org.uk/tower-of-london/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/historicroyalpalaces/" target="_blank"><i class="fab fa-instagram mr-1"></i>HRP Insta</a>
+<p class="curiosity">ℹ️ Serviu como palácio real, prisão, arsenal e até zoológico ao longo de seus quase 1000 anos de história.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-compass"></i> Greenwich (Meridiano, Cutty Sark, Parque)</h4>
+<p>Visite o Observatório Real (Meridiano de Greenwich), o navio Cutty Sark, o Museu Marítimo Nacional e o parque com vistas de Londres. (Preços variados para atrações).</p>
+<p class="detail-item"><i class="fas fa-train"></i> DLR para Cutty Sark ou Greenwich; Barco do Tâmisa.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Greenwich,+London/@51.4810831,0.0055741" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Greenwich (Área)</a>
+<a class="btn btn-web" href="https://www.rmg.co.uk/" target="_blank"><i class="fas fa-globe mr-1"></i>Royal Museums Greenwich</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/royalmuseumsgreenwich/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+</div>
+<div class="activity-card restaurant-card">
+<h4><i class="fas fa-utensils"></i> Sugestões de Refeição/Pub (Alternativo - Tower Hill/Greenwich)</h4>
+<p><strong>The Hung, Drawn &amp; Quartered:</strong> Pub perto da Torre de Londres. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Cutty+Sark,+Greenwich/@51.4820314,-0.0091243" target="_blank">[Mapa]</a></p>
+<p><strong>Mercado de Greenwich:</strong> Comida de rua e artesanato. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Royal+Observatory+Greenwich/@51.4768558,-0.0005005" target="_blank">[Mapa]</a></p>
+<p><strong>The Gipsy Moth:</strong> Pub ao lado do Cutty Sark em Greenwich. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Greenwich+Park/@51.4767182,0.0002635" target="_blank">[Mapa]</a></p>
+</div>
+</div>
+</div>
+<div class="day-section">
+<div class="day-header" onclick="toggleSection(this.parentElement)">
+<h2>📅 22 de Abril: LONDRES 🇬🇧 - Mercados, Canais e Despedida</h2>
+<i class="fas fa-chevron-down toggle-icon"></i>
+</div>
+<div class="day-content">
+<p class="small-note">Último dia completo em Londres! Aproveite para ver o que faltou ou revisitar favoritos.</p>
+<h4 class="font-semibold mb-2 text-lg text-blue-700"><i class="fas fa-shoe-prints"></i> Sugestões para hoje:</h4>
+<div class="activity-card">
+<h4><i class="fas fa-shopping-cart"></i> Camden Town &amp; Market</h4>
+<p>Explore os mercados ecléticos (moda, artesanato, comida), lojas alternativas e a atmosfera única.</p>
+<p class="detail-item"><i class="fas fa-subway"></i> Camden Town, Chalk Farm.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Fachadas das lojas na Camden High Street; Camden Lock; comidas coloridas do mercado.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Tower+Bridge/@51.5054564,-0.0753565" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.camdenmarket.com/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/camdenmarketldn/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ Camden tornou-se um centro da cultura alternativa de Londres nos anos 70 e mantém essa vibe.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-ship"></i> Passeio por Little Venice &amp; Regent's Canal</h4>
+<p>Caminhe ou faça um passeio de barco pelo canal tranquilo, vendo casas-barco coloridas.</p>
+<p class="detail-item"><i class="fas fa-subway"></i> Warwick Avenue, Paddington.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Little+Venice/@51.5236214,-0.1804788" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Little Venice</a>
+<a class="btn btn-secondary" href="https://www.jasons.co.uk/" target="_blank"><i class="fas fa-ship mr-1"></i>Jason's Trip</a>
+<a class="btn btn-secondary" href="https://www.londonwaterbus.com/" target="_blank"><i class="fas fa-ship mr-1"></i>London Waterbus</a>
+<p class="curiosity">ℹ️ O Regent's Canal foi construído no início do século XIX para transporte de mercadorias.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-university"></i> Museu Britânico (Revisitar/Se não foi)</h4>
+<p>Explore a vasta coleção mundial (gratuito, reserve horário).</p>
+<p class="detail-item"><i class="fas fa-subway"></i> Tottenham Court Rd, Holborn, Russell Sq.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> O Grande Pátio (Great Court) com seu teto de vidro; Pedra de Roseta; esculturas do Partenon.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/The+British+Museum/@51.519413,-0.126957" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.britishmuseum.org/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/britishmuseum/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ Foi o primeiro museu público nacional do mundo, aberto em 1759.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-palette"></i> National Gallery (Revisitar/Se não foi)</h4>
+<p>Admire obras-primas da pintura europeia (gratuito, reserve horário).</p>
+<p class="detail-item"><i class="fas fa-subway"></i> Charing Cross, Leicester Square.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Fachada vista da Trafalgar Square; interior das salas principais.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/The+National+Gallery/@51.5089297,-0.128299" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.nationalgallery.org.uk/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/nationalgallery/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ Diferente de muitos museus europeus, a National Gallery não foi formada pela nacionalização de uma coleção real existente.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-shopping-bag"></i> Covent Garden &amp; Neal's Yard</h4>
+<p>Explore o mercado, lojas, artistas de rua e descubra o pátio colorido e escondido de Neal's Yard.</p>
+<p class="detail-item"><i class="fas fa-subway"></i> Covent Garden, Leicester Square.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Artistas na praça; o pátio de Neal's Yard.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Covent+Garden/@51.511508,-0.124982" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Covent Garden</a>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Neal's+Yard/@51.5145957,-0.1269574" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Neal's Yard</a>
+<p class="curiosity">ℹ️ Covent Garden era originalmente o jardim do convento (convent garden) da Abadia de Westminster.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-phone-alt"></i> Cabines Telefônicas Vermelhas Icônicas</h4>
+<p>Encontre as famosas cabines K2 e K6 para fotos clássicas.</p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i> <strong>Locais Populares:</strong> Parliament Square (Westminster), Covent Garden (perto do mercado), Smithfield Market, Embankment.</p>
+<a class="btn btn-maps btn-sm" href="https://www.google.com/maps/place/Parliament+Square/@51.5007295,-0.1268144" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Parliament Sq</a>
+<a class="btn btn-maps btn-sm" href="https://www.google.com/maps/place/Covent+Garden/@51.511508,-0.124982" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Covent Garden</a>
+<p class="curiosity">ℹ️ O design K2 (mais ornamentado) e K6 (mais comum) foram projetados por Sir Giles Gilbert Scott, o mesmo arquiteto da Bankside Power Station (Tate Modern).</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-theater-masks"></i> Musical no West End</h4>
+<p>Última chance para um show! Verifique disponibilidade e compre ingressos.</p>
+<p class="detail-item"><i class="fas fa-subway"></i> Leicester Square, Piccadilly Circus, Covent Garden.</p>
+<a class="btn btn-secondary" href="https://officiallondontheatre.com/" target="_blank"><i class="fas fa-ticket-alt mr-1"></i>Ver Shows/Tickets</a>
+</div>
+<div class="activity-card restaurant-card">
+<h4><i class="fas fa-utensils"></i> Sugestões de Refeição/Pub (Camden/Covent Garden)</h4>
+<p><strong>Camden Market Stables:</strong> Várias opções de comida de rua global.</p>
+<p><strong>The Hawley Arms (Camden):</strong> Pub famoso por ter sido frequentado por Amy Winehouse. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Shakespeare's+Globe/@51.5080955,-0.0965755" target="_blank">[Mapa]</a></p>
+<p><strong>Rules (Covent Garden):</strong> Restaurante mais antigo de Londres (tradicional, caro). <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Tate+Modern/@51.5077494,-0.0993845" target="_blank">[Mapa]</a></p>
+<p><strong>The Lamb &amp; Flag (Covent Garden):</strong> Um dos pubs mais antigos, em um beco. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/St+Paul's+Cathedral/@51.5138453,-0.0983506" target="_blank">[Mapa]</a></p>
+</div>
+</div>
+</div>
+<div class="day-section">
+<div class="day-header" onclick="toggleSection(this.parentElement)">
+<h2>📅 23, 27, 28 de Abril: DIAS DE VIAGEM 🚂🚄</h2>
+<i class="fas fa-chevron-down toggle-icon"></i>
+</div>
+<div class="day-content">
+<p>Estes dias envolvem viagens de trem entre as cidades. Veja detalhes na aba "Hosp/Transp".</p>
+<p><strong>23/04:</strong> Londres → Edimburgo</p>
+<p><strong>27/04:</strong> Edimburgo → Londres (pernoite)</p>
+<p><strong>28/04:</strong> Londres → Bruxelas</p>
+</div>
+</div>
+</div>
+<div class="tab-content" id="edinburgh">
+<div class="day-section">
+<div class="day-header" onclick="toggleSection(this.parentElement)">
+<h2>📅 24 de Abril: EDIMBURGO 🏴󠁧󠁢󠁳󠁣󠁴󠁿 - Castelo e Coração da Old Town</h2>
+<i class="fas fa-chevron-down toggle-icon"></i>
+</div>
+<div class="day-content">
+<p class="small-note">Sugestões flexíveis para os dias 24 a 26.</p>
+<h4 class="font-semibold mb-2 text-lg text-green-700"><i class="fas fa-shoe-prints"></i> Sugestões para hoje:</h4>
+<div class="activity-card">
+<h4><i class="fas fa-chess-rook"></i> Castelo de Edimburgo</h4>
+<p>Explore a fortaleza, Joias da Coroa, Pedra do Destino, canhão Mons Meg. <span class="btn btn-price btn-sm">~£20-£23</span> (Reserve online!).</p>
+<p class="detail-item"><i class="fas fa-bus"></i> Vários ônibus param perto; subida a pé pela Royal Mile.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Vista da Esplanada; canhões apontando para a cidade; vista dos jardins da Princes Street.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Edinburgh+Castle/@55.9485946,-3.1999138" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.edinburghcastle.scot/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/edinburghcastleofficial/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ Construído sobre um vulcão extinto (Castle Rock), o castelo tem sido fortaleza real e militar por séculos.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-road"></i> Royal Mile (Parte Alta: Castlehill, Lawnmarket, High St)</h4>
+<p>Caminhe pela espinha dorsal da Old Town, explore lojas, 'closes' (becos estreitos) e edifícios históricos.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Vista da rua em direção ao castelo; detalhes arquitetônicos; 'closes' fotogênicos.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Royal+Mile/@55.9496912,-3.1899075" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Local Aprox.</a>
+<p class="curiosity">ℹ️ A Royal Mile tem quase exatamente uma milha escocesa (1.8km) e conecta o Castelo ao Palácio de Holyroodhouse.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-glass-whiskey"></i> The Scotch Whisky Experience</h4>
+<p>Tour interativo sobre uísque com direito a coleção e degustação. <span class="btn btn-price btn-sm">~£21+</span> (Vários níveis de tour).</p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i> Perto do Castelo.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Tower+Hill+Underground+Station/@51.509026,-0.0764724" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.scotchwhiskyexperience.co.uk/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/scotchwhiskyexp/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ Possui uma das maiores coleções de Scotch Whisky do mundo.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-low-vision"></i> Camera Obscura and World of Illusions</h4>
+<p>Atração divertida com ilusões de ótica e vistas da cidade. <span class="btn btn-price btn-sm">~£22</span></p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i> Perto do Castelo.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Camera+Obscura+and+World+of+Illusions/@55.9482715,-3.1956964" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.camera-obscura.co.uk/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/camobscura1/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ A Camera Obscura original data de 1853, oferecendo uma forma única de ver a cidade.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-place-of-worship"></i> St Giles' Cathedral</h4>
+<p>Visite a "High Kirk" de Edimburgo (gratuito, doações bem-vindas). Admire a arquitetura gótica e a Thistle Chapel.</p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i> Royal Mile (High Street).</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Tower+of+London/@51.5081124,-0.0759493" target="_blank"><i class="fas fa-church mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.stgilescathedral.org.uk/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/stgilescathedral/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ Foi o centro da Reforma Escocesa liderada por John Knox no século XVI.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-book-open"></i> Writers' Museum</h4>
+<p>Pequeno museu gratuito dedicado a Burns, Scott e Stevenson.</p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i> Lady Stair's Close, Lawnmarket.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Hyde+Park/@51.5072682,-0.1657303" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.edinburghmuseums.org.uk/venue/writers-museum" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-shopping-bag"></i> Lojas na Victoria Street</h4>
+<p>Explore as lojas coloridas na rua curva que dizem ter inspirado o Beco Diagonal de Harry Potter.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Vista da rua a partir da George IV Bridge.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Victoria+Street,+London/@51.4969037,-0.1403925" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Victoria Street</a>
+</div>
+<div class="activity-card restaurant-card">
+<h4><i class="fas fa-utensils"></i> Sugestões de Refeição/Pub (Old Town)</h4>
+<p><strong>The World's End:</strong> Pub histórico na Royal Mile. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Millennium+Bridge/@51.5107141,-0.0980366" target="_blank">[Mapa]</a></p>
+<p><strong>Oink (Victoria St):</strong> Sanduíches de porco assado (hog roast). <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/One+New+Change/@51.5132513,-0.0960772" target="_blank">[Mapa]</a></p>
+<p><strong>Deacon Brodie's Tavern:</strong> Pub tradicional na Lawnmarket. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Burg+Square/@51.2087402,3.2269507" target="_blank">[Mapa]</a></p>
+<p><strong>Makars Gourmet Mash Bar:</strong> Comida escocesa moderna focada em purês. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Basilica+of+the+Holy+Blood/@51.2083794,3.2266949" target="_blank">[Mapa]</a></p>
+</div>
+</div>
+</div>
+<div class="day-section">
+<div class="day-header" onclick="toggleSection(this.parentElement)">
+<h2>📅 25 de Abril: EDIMBURGO 🏴󠁧󠁢󠁳󠁣󠁴󠁿 - Palácio, Parlamento e Museus</h2>
+<i class="fas fa-chevron-down toggle-icon"></i>
+</div>
+<div class="day-content">
+<p class="small-note">Sugestões flexíveis.</p>
+<h4 class="font-semibold mb-2 text-lg text-green-700"><i class="fas fa-shoe-prints"></i> Sugestões para hoje:</h4>
+<div class="activity-card">
+<h4><i class="fas fa-crown"></i> Palácio de Holyroodhouse</h4>
+<p>Residência oficial do monarca na Escócia. Visite os Apartamentos de Estado e a Abadia. <span class="btn btn-price btn-sm">~£20</span> (Reserve online).</p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i> Canongate, final da Royal Mile.</p>
+<p class="detail-item"><i class="fas fa-bus"></i> Ônibus Lothian 35 ou caminhe pela Royal Mile.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Fachada com Arthur's Seat ao fundo; ruínas da Abadia.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Palace+of+Holyroodhouse/@55.9522182,-3.1722791" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.rct.uk/visit/palace-of-holyroodhouse" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/royalcollectiontrust/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ Foi palco de eventos históricos, incluindo o assassinato de David Rizzio, secretário de Mary, Rainha da Escócia.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-landmark"></i> Parlamento Escocês</h4>
+<p>Admire a arquitetura moderna e controversa. Visitas guiadas gratuitas (reservar).</p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i> Em frente a Holyrood.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Scottish+Parliament+Building/@55.9529683,-3.1745419" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.parliament.scot/visit" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/scottishparliament/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ Projetado pelo arquiteto catalão Enric Miralles, o design incorpora motivos inspirados na paisagem escocesa.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-globe-europe"></i> Dynamic Earth</h4>
+<p>Centro de ciências interativo sobre a história do planeta. <span class="btn btn-price btn-sm">~£20</span></p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i> Perto de Holyrood.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Big+Ben/@51.5007292,-0.1246254" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.dynamicearth.co.uk/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/dynamic_earth/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ Leva você em uma jornada pelo tempo, desde o Big Bang até o futuro do planeta.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-university"></i> Museu Nacional da Escócia</h4>
+<p>Explore história, ciência, arte e cultura escocesa e mundial (gratuito, reserve horário).</p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i> Chambers Street.</p>
+<p class="detail-item"><i class="fas fa-bus"></i> Vários ônibus param nas pontes próximas (George IV Bridge, South Bridge).</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Grand Gallery; vista do terraço (se aberto); ovelha Dolly.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/National+Museum+of+Scotland/@55.9469418,-3.1900739" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.nms.ac.uk/national-museum-of-scotland/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/nationalmuseumsscotland/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ O museu combina dois edifícios: um vitoriano e uma extensão moderna.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-ghost"></i> Greyfriars Kirkyard &amp; Bobby</h4>
+<p>Cemitério histórico (inspiração para HP) e estátua do cão fiel.</p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i> Perto do Museu Nacional.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Greyfriars+Kirkyard/@55.946827,-3.1930072" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Kirkyard</a>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Greyfriars+Bobby/@55.9474054,-3.1925634" target="_blank"><i class="fas fa-dog mr-1"></i>Estátua</a>
+<p class="curiosity">ℹ️ Diz-se que Greyfriars Bobby guardou o túmulo de seu dono por 14 anos. O cemitério tem túmulos com nomes usados em Harry Potter (McGonagall, Thomas Riddell).</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-paint-brush"></i> Scottish National Gallery</h4>
+<p>Coleção de mestres escoceses e europeus (gratuito).</p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i> The Mound.</p>
+<p class="detail-item"><i class="fas fa-bus"></i> Vários ônibus na Princes Street.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Westminster+Bridge/@51.50082,-0.121533" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.nationalgalleries.org/visit/scottish-national-gallery" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/natgalleriessco/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+</div>
+<div class="activity-card restaurant-card">
+<h4><i class="fas fa-utensils"></i> Sugestões de Refeição/Pub (Old Town South/University Area)</h4>
+<p><strong>The Pear Tree:</strong> Pub com grande área externa (beer garden), popular entre estudantes. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Markt,+Bruges/@51.2093486,3.2247228" target="_blank">[Mapa]</a></p>
+<p><strong>Ting Thai Caravan:</strong> Comida tailandesa de rua saborosa e informal. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Belfry+of+Bruges/@51.2087655,3.2240914" target="_blank">[Mapa]</a></p>
+<p><strong>The Sandy Bell's:</strong> Pub famoso pela música folk tradicional ao vivo. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Bruges+City+Hall/@51.2084437,3.2264627" target="_blank">[Mapa]</a></p>
+</div>
+</div>
+</div>
+<div class="day-section">
+<div class="day-header" onclick="toggleSection(this.parentElement)">
+<h2>📅 26 de Abril: EDIMBURGO 🏴󠁧󠁢󠁳󠁣󠁴󠁿 - Vistas, Vilarejos e New Town</h2>
+<i class="fas fa-chevron-down toggle-icon"></i>
+</div>
+<div class="day-content">
+<p class="small-note">Sugestões flexíveis.</p>
+<h4 class="font-semibold mb-2 text-lg text-green-700"><i class="fas fa-shoe-prints"></i> Sugestões para hoje:</h4>
+<div class="activity-card">
+<h4><i class="fas fa-mountain"></i> Subida ao Arthur's Seat ou Salisbury Crags</h4>
+<p>Caminhada para vistas panorâmicas.</p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i> Holyrood Park.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Vista 360º do topo do Arthur's Seat; vista da cidade a partir das Salisbury Crags.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Arthur's+Seat/@55.9445941,-3.1614936" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Arthur's Seat</a>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Salisbury+Crags/@55.9443131,-3.1700395" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Salisbury Crags</a>
+<p class="curiosity">ℹ️ Parte de um antigo sistema vulcânico, oferece uma paisagem selvagem no meio da cidade.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-monument"></i> Calton Hill</h4>
+<p>Vistas excelentes e monumentos (Monumento Nacional, Nelson, Dugald Stewart).</p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i> Fim leste da Princes Street.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Vista da Princes Street com o Castelo ao fundo; Dugald Stewart Monument com a Old Town atrás (foto clássica).</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Calton+Hill/@55.9552114,-3.1827184" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<p class="curiosity">ℹ️ O Monumento Nacional, inspirado no Partenon, nunca foi concluído por falta de fundos, ganhando o apelido de "Disgrace of Edinburgh".</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-home"></i> Passeio por Dean Village</h4>
+<p>Descubra o vilarejo pitoresco ao longo do rio Water of Leith.</p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i> Noroeste do centro.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Ponte sobre o rio com as casas coloridas; Well Court.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Brussels+Park/@50.844504,4.3664142" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<p class="curiosity">ℹ️ Era um antigo vilarejo de moleiros, e muitos edifícios foram restaurados.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-store-alt"></i> Explorar a New Town</h4>
+<p>Caminhe pela arquitetura georgiana (George St, Queen St), veja a Princes Street e seus jardins.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Princes+Street/@55.9524787,-3.1939498" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Princes St</a>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/George+Street,+Edinburgh/@55.9531955,-3.1987093" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>George St</a>
+<p class="curiosity">ℹ️ A New Town foi planejada no século XVIII para aliviar a superlotação da Old Town e é um exemplo notável de urbanismo georgiano.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-portrait"></i> Scottish National Portrait Gallery</h4>
+<p>Retratos da história escocesa (gratuito).</p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i> Queen Street, New Town.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Scott+Monument/@55.9523606,-3.193097" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.nationalgalleries.org/visit/scottish-national-portrait-gallery" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-ghost"></i> Ghost Tour (Noite)</h4>
+<p>Tour guiado pelos locais assombrados da Old Town. <span class="btn btn-price btn-sm">~£15-£20</span></p>
+<a class="btn btn-secondary" href="https://www.google.com/search?q=ghost+tours+edinburgh" target="_blank"><i class="fas fa-search mr-1"></i>Ver Tours</a>
+<p class="curiosity">ℹ️ Edimburgo é considerada uma das cidades mais assombradas da Europa, com muitas histórias ligadas aos 'closes' e cofres subterrâneos.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-anchor"></i> Royal Yacht Britannia (Leith)</h4>
+<p>Visite o antigo iate real. <span class="btn btn-price btn-sm">~£19.50</span></p>
+<p class="detail-item"><i class="fas fa-bus"></i> Ônibus Lothian 11, 22, 35 para Ocean Terminal.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Princes+Street+Gardens/@55.9519894,-3.1997297" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.royalyachtbritannia.co.uk/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/royalyachtbritannia/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ Serviu a Família Real por mais de 40 anos, viajando mais de um milhão de milhas náuticas.</p>
+</div>
+<div class="activity-card restaurant-card">
+<h4><i class="fas fa-utensils"></i> Sugestões de Refeição/Pub (New Town/Stockbridge)</h4>
+<p><strong>The Guildford Arms:</strong> Pub vitoriano deslumbrante perto de St Andrew Square. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Roze+Huis/@51.2096066,3.2224916" target="_blank">[Mapa]</a></p>
+<p><strong>Café Royal Oyster Bar:</strong> Bar/restaurante histórico e elegante na West Register St. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Simon+Stevinplein/@51.2089421,3.2248433" target="_blank">[Mapa]</a></p>
+<p><strong>Stockbridge Market (Domingo):</strong> Mercado com comida de rua e produtos locais (se coincidir). <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Beguinage/@51.1996337,3.2207649" target="_blank">[Mapa]</a></p>
+<p><strong>The Scran &amp; Scallie (Stockbridge):</strong> Gastropub premiado (reserva essencial). <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Lake+of+Love/@51.2008793,3.2224212" target="_blank">[Mapa]</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="tab-content" id="brussels">
+<div class="day-section">
+<div class="day-header" onclick="toggleSection(this.parentElement)">
+<h2>📅 28 de Abril: BRUXELAS 🇧🇪 - Chegada e Coração da Cidade</h2>
+<i class="fas fa-chevron-down toggle-icon"></i>
+</div>
+<div class="day-content">
+<p>Chegada do Eurostar, check-in no Brussels Marriott Hotel Grand Place.</p>
+<h4 class="font-semibold mt-4 mb-2 text-lg text-red-700"><i class="fas fa-shoe-prints"></i> Atividades da Tarde/Noite:</h4>
+<div class="activity-card">
+<h4><i class="fas fa-city"></i> Grand Place (Grote Markt)</h4>
+<p>Admire a praça central (UNESCO). Volte à noite para vê-la iluminada.</p>
+<p class="detail-item"><i class="fas fa-subway"></i> De Brouckère, Gare Centrale, Bourse.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Panorâmica da praça; detalhes das fachadas douradas; à noite iluminada.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Grand+Place/@50.8467333,4.3495655" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.brussels.be/grand-place-brussels" target="_blank"><i class="fas fa-globe mr-1"></i>Info</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/visitbrussels/" target="_blank"><i class="fab fa-instagram mr-1"></i>Visit Brussels</a>
+<p class="curiosity">ℹ️ As casas das guildas (corporações de ofícios) ao redor da praça exibem símbolos de suas profissões nas fachadas.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-child"></i> Ícones: Manneken Pis, Jeanneke Pis &amp; Zinneke Pis</h4>
+<p>Encontre as estátuas que urinam.</p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i> Perto da Grand Place.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Manneken+Pis/@50.8449914,4.3495593" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Manneken</a>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Jeanneke+Pis/@50.8482216,4.3516137" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Jeanneke</a>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Zinneke+Pis/@50.8500805,4.3448388" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Zinneke</a>
+<p class="curiosity">ℹ️ O Manneken Pis original (do século XVII) está no Museu da Cidade de Bruxelas; a estátua na rua é uma réplica.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-shopping-bag"></i> Galeries Royales Saint-Hubert</h4>
+<p>Passeie pelas galerias cobertas, veja chocolaterias e lojas elegantes.</p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i> Perto da Grand Place.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> O teto de vidro; as vitrines elaboradas.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Galeries+Royales+Saint-Hubert/@50.8489535,4.3533036" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.grsh.be/en/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/galeries_royales_saint_hubert/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ Dividida em Galeria do Rei, Galeria da Rainha e Galeria dos Príncipes.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-euro-sign"></i> Edifício da Bolsa (Bourse/Beurs)</h4>
+<p>Admire a arquitetura externa do antigo edifício da bolsa, recentemente renovado e aberto ao público com experiências (Belgian Beer World).</p>
+<p class="detail-item"><i class="fas fa-subway"></i> Bourse/Beurs.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Halvemaanstraat/@51.1995675,3.2227749" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://boursebeurs.be/en" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-secondary" href="https://www.belgianbeerworld.be/en/" target="_blank"><i class="fas fa-beer mr-1"></i>Belgian Beer World</a>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-heart"></i> Degustação de Chocolates</h4>
+<p>Comece a provar! Marcas famosas: Neuhaus, Godiva, Leonidas, Pierre Marcolini, Wittamer.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-cookie-bite"></i> Waffle Belga</h4>
+<p>Experimente um waffle de Liège (doce) ou de Bruxelas (leve).</p>
+</div>
+<div class="activity-card restaurant-card">
+<h4><i class="fas fa-utensils"></i> Sugestões de Refeição/Pub (Centro Histórico)</h4>
+<p><strong>Chez Léon (€€):</strong> Famoso por Moules-frites. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Chez+Léon/@50.8481004,4.3534424" target="_blank">[Mapa]</a></p>
+<p><strong>Fin de Siècle (€€):</strong> Comida belga farta, sem reservas. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Fin+de+Siècle/@50.8468011,4.3471544" target="_blank">[Mapa]</a></p>
+<p><strong>Delirium Café / Village:</strong> Cervejas e ambiente animado. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Delirium+Cafe/@50.8483075,4.3524365" target="_blank">[Mapa]</a></p>
+<p><strong>Fritland (€):</strong> Batatas fritas clássicas perto da Bourse. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/search/?api=1&amp;query=Fritland+Brussels" target="_blank">[Mapa]</a></p>
+</div>
+</div>
+</div>
+<div class="day-section">
+<div class="day-header" onclick="toggleSection(this.parentElement)">
+<h2>📅 29 de Abril: BRUXELAS 🇧🇪 - Arte, Realeza e Quadrinhos</h2>
+<i class="fas fa-chevron-down toggle-icon"></i>
+</div>
+<div class="day-content">
+<h4 class="font-semibold mt-4 mb-2 text-lg text-red-700"><i class="fas fa-shoe-prints"></i> Sugestões para hoje:</h4>
+<div class="activity-card">
+<h4><i class="fas fa-mountain"></i> Mont des Arts &amp; Vistas</h4>
+<p>Aprecie a vista dos jardins e da torre da prefeitura.</p>
+<p class="detail-item"><i class="fas fa-subway"></i> Gare Centrale.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Do topo das escadas/jardins em direção à Grand Place.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Mont+des+Arts+Brussels" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Mont des Arts</a>
+<p class="curiosity">ℹ️ O complexo foi criado no início do século XX para conectar a parte alta e baixa da cidade.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-music"></i> Museu de Instrumentos Musicais (MIM)</h4>
+<p>Explore a coleção em um edifício Art Nouveau. <span class="btn btn-price btn-sm">~€15</span></p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i> Mont des Arts.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Fachada do edifício Old England; vista do café no terraço.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/MIM/@50.843056,4.356389" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>MIM</a>
+<a class="btn btn-web" href="https://www.mim.be/en" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/mimbrussels/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ O sistema de áudio guia toca a música do instrumento que você está vendo.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-hat-wizard"></i> Museu Magritte</h4>
+<p>Mergulhe no mundo surrealista de René Magritte. <span class="btn btn-price btn-sm">~€10</span></p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i> Mont des Arts.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Magritte+Museum+Brussels" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.fine-arts-museum.be/en/museums/magritte-museum" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<p class="curiosity">ℹ️ Dedicado ao mais famoso artista belga, conhecido por suas imagens enigmáticas e instigantes.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-palette"></i> Museus Reais de Belas Artes</h4>
+<p>Explore arte antiga (Old Masters) e moderna. <span class="btn btn-price btn-sm">~€15+</span> (varia por coleção)</p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i> Mont des Arts.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Camera+Obscura+and+World+of+Illusions/@55.9482715,-3.1956964" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.fine-arts-museum.be/en" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/belgiumfineartsmuseums/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ Inclui obras importantes de mestres flamengos como Bruegel, Rubens e Van Dyck.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-crown"></i> Palácio Real (Exterior) &amp; Parc de Bruxelles</h4>
+<p>Admire o palácio (visitas internas só no verão) e relaxe no parque.</p>
+<p class="detail-item"><i class="fas fa-subway"></i> Parc, Trône.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Royal+Palace+of+Brussels/@50.842949,4.362214" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Palácio Real</a>
+<a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Parc+de+Bruxelles+Brussels" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Parc de Bruxelles</a>
+<p class="curiosity">ℹ️ O Palácio Real é o palácio oficial do Rei dos Belgas, mas não sua residência (ele mora no Palácio de Laeken).</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-comments"></i> Rota dos Quadrinhos (Comic Strip Route)</h4>
+<p>Cace os murais de personagens como Tintin, Smurfs, Lucky Luke.</p>
+<a class="btn btn-web" href="https://visit.brussels/en/article/the-comic-strip-route" target="_blank"><i class="fas fa-map-marked-alt mr-1"></i>Info e Mapa</a>
+<p class="curiosity">ℹ️ Bruxelas é considerada a capital dos quadrinhos franco-belgas (bande dessinée).</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-book"></i> Centro Belga da Banda Desenhada</h4>
+<p>Museu dos quadrinhos em um edifício Art Nouveau de Victor Horta. <span class="btn btn-price btn-sm">~€13</span></p>
+<p class="detail-item"><i class="fas fa-subway"></i> Botanique, Rogier.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Palace+of+Charles+of+Lorraine/@50.8423765,4.3561003" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.comicscenter.net/en/home" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/comicscenter/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-gavel"></i> Palais de Justice &amp; Elevador Poelaert</h4>
+<p>Veja o imenso Palácio da Justiça e pegue o elevador gratuito para vistas.</p>
+<p class="detail-item"><i class="fas fa-subway"></i> Louise (para Palácio), Porte de Hal (para base do elevador).</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Vista panorâmica do topo do elevador.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Palais+de+Justice,+Bruxelas/@50.8368003,4.3524947" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Palais de Justice</a>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Elevator+Panoramic+Place+Poelaert/@50.8369773,4.3518377" target="_blank"><i class="fas fa-elevator mr-1"></i>Elevador</a>
+<p class="curiosity">ℹ️ Foi um dos maiores edifícios construídos no século XIX e seu tamanho e custo geraram controvérsia.</p>
+</div>
+<div class="activity-card restaurant-card">
+<h4><i class="fas fa-utensils"></i> Sugestões de Refeição/Pub (Sablon/Marolles)</h4>
+<p><strong>Au Vieux Saint Martin (Sablon):</strong> Clássico belga, ambiente tradicional. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Graslei,+Ghent/@51.0563933,3.7202974" target="_blank">[Mapa]</a></p>
+<p><strong>L'Idiot du Village (Marolles):</strong> Bistrô charmoso com comida saborosa. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/St.+Michael's+Bridge/@51.0559675,3.7197017" target="_blank">[Mapa]</a></p>
+<p><strong>La Roue d'Or (€€, perto Grand Place):</strong> Comida belga em ambiente Art Nouveau. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/search/?api=1&amp;query=La+Roue+d'Or+Brussels" target="_blank">[Mapa]</a></p>
+<p><strong>Wittamer (Sablon):</strong> Patisserie famosa para um doce ou café. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/St+Nicholas+Church,+Ghent/@51.0555517,3.7201994" target="_blank">[Mapa]</a></p>
+</div>
+</div>
+</div>
+<div class="day-section">
+<div class="day-header" onclick="toggleSection(this.parentElement)">
+<h2>📅 2 de Maio: BRUXELAS 🇧🇪 - Atomium, Europa e Cerveja</h2>
+<i class="fas fa-chevron-down toggle-icon"></i>
+</div>
+<div class="day-content">
+<h4 class="font-semibold mt-4 mb-2 text-lg text-red-700"><i class="fas fa-shoe-prints"></i> Sugestões para hoje:</h4>
+<div class="activity-card">
+<h4><i class="fas fa-atom"></i> Atomium</h4>
+<p>Visite a estrutura icônica da Expo 58. <span class="btn btn-price btn-sm">~€16</span></p>
+<p class="detail-item"><i class="fas fa-subway"></i> Linha 6 (Heysel/Heizel).</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> De baixo para cima; de longe com os jardins; das esferas superiores.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Atomium+Brussels" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Atomium</a>
+<a class="btn btn-web" href="https://atomium.be/home/cover?lang=en" target="_blank"><i class="fas fa-globe mr-1"></i>Site</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/atomium.brussels/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ Representa um cristal de ferro ampliado 165 bilhões de vezes.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-map-marked-alt"></i> Mini-Europe</h4>
+<p>Parque com réplicas de monumentos europeus. <span class="btn btn-price btn-sm">~€20</span></p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i> Ao lado do Atomium.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Mini-Europe+Brussels" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Mini-Europe</a>
+<a class="btn btn-web" href="https://www.minieurope.com/en/" target="_blank"><i class="fas fa-globe mr-1"></i>Site</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/minieurope_official/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ Possui cerca de 350 modelos em escala 1:25, representando cerca de 80 cidades.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-car"></i> Autoworld</h4>
+<p>Museu de carros históricos no Parc du Cinquantenaire. <span class="btn btn-price btn-sm">~€15</span></p>
+<p class="detail-item"><i class="fas fa-subway"></i> Merode, Schuman.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Autoworld+Brussels/@50.8368577,4.3933406" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Autoworld</a>
+<a class="btn btn-web" href="https://www.autoworld.be/en/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/autoworld_brussels/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-archway"></i> Parc du Cinquantenaire &amp; Museus</h4>
+<p>Grande parque com arco triunfal e museus (Autoworld, Militar, Arte e História).</p>
+<p class="detail-item"><i class="fas fa-subway"></i> Merode, Schuman.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> O Arco do Triunfo; vista do topo do Museu Militar (se acessível).</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Parc+du+Cinquantenaire/@50.8417112,4.3926136" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Parc</a>
+<a class="btn btn-secondary" href="https://www.artandhistory.museum/en" target="_blank"><i class="fas fa-landmark mr-1"></i>Museu Arte/História</a>
+<a class="btn btn-secondary" href="https://www.klm-mra.be/en/" target="_blank"><i class="fas fa-fighter-jet mr-1"></i>Museu Militar</a>
+<p class="curiosity">ℹ️ O parque foi construído para celebrar o 50º aniversário da independência da Bélgica em 1880.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-flag-usa"></i> Bairro Europeu &amp; Parlamentarium</h4>
+<p>Caminhe pelo bairro das instituições da UE e visite o Parlamentarium (gratuito).</p>
+<p class="detail-item"><i class="fas fa-subway"></i> Schuman, Maelbeek, Trône.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Parc+Leopold/@50.8382906,4.3799165" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Bairro EU</a>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Parlamentarium/@50.8389925,4.3751884" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Parlamentarium</a>
+<a class="btn btn-web" href="https://visiting.europarl.europa.eu/en/visitor-offer/brussels/parlamentarium" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<p class="curiosity">ℹ️ O Parlamentarium oferece uma visão interativa sobre a história e o funcionamento do Parlamento Europeu.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-beer"></i> Cervejaria Cantillon (Visita/Loja)</h4>
+<p>Visite a tradicional cervejaria de Lambic/Gueuze. Tours <span class="btn btn-price btn-sm">~€10</span> (inclui degustação).</p>
+<p class="detail-item"><i class="fas fa-subway"></i> Clemenceau (ou caminhada de Midi).</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Brasserie+Cantillon+Brussels" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.cantillon.be/?lang=en" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/brasseriecantillonofficiel/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ Uma das poucas cervejarias que ainda produzem cervejas de fermentação espontânea (Lambic) da forma tradicional em Bruxelas.</p>
+</div>
+<div class="activity-card restaurant-card">
+<h4><i class="fas fa-utensils"></i> Sugestões de Refeição/Pub (Despedida)</h4>
+<p><strong>Nüetnigenough (€€):</strong> Comida belga e ótima cerveja (reserve!). <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/search/?api=1&amp;query=Nüetnigenough+Brussels" target="_blank">[Mapa]</a></p>
+<p><strong>Moeder Lambic Fontainas:</strong> Bar com excelente seleção de cervejas artesanais/Lambics. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/search/?api=1&amp;query=Moeder+Lambic+Fontainas+Brussels" target="_blank">[Mapa]</a></p>
+<p><strong>Restaurantes em Saint Boniface (Ixelles):</strong> Área animada com muitas opções. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/European+Quarter/@50.8410166,4.381816" target="_blank">[Mapa Área]</a></p>
+</div>
+</div>
+</div>
+<div class="day-section">
+<div class="day-header" onclick="toggleSection(this.parentElement)">
+<h2>📅 3 de Maio: BRUXELAS 🇧🇪 - Compras Finais e Partida</h2>
+<i class="fas fa-chevron-down toggle-icon"></i>
+</div>
+<div class="day-content">
+<h4 class="font-semibold mt-4 mb-2 text-lg text-red-700"><i class="fas fa-shopping-cart"></i> Manhã:</h4>
+<div class="activity-card">
+<h4><i class="fas fa-gift"></i> Compras Finais</h4>
+<p>Chocolates (Pierre Marcolini, Neuhaus, Godiva, Leonidas), cervejas especiais, souvenirs, rendas.</p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i> Lojas: Galeries Royales, Sablon, Rue Neuve, supermercados (para cervejas).</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-store"></i> Mercado de Pulgas - Place du Jeu de Balle</h4>
+<p>Mercado diário em Marolles, interessante para garimpar (manhã).</p>
+<p class="detail-item"><i class="fas fa-subway"></i> Porte de Hal, Lemonnier.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Place+du+Jeu+de+Balle/@50.8330362,4.3457992" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Place du Jeu de Balle</a>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-cookie"></i> Choco-Story Brussels</h4>
+<p>Museu do chocolate com demonstração e degustação. <span class="btn btn-price btn-sm">~€11</span></p>
+<p class="detail-item"><i class="fas fa-map-marker-alt"></i> Perto da Grand Place.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Choco-Story+Brussels" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://choco-story-brussels.be/en/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/chocostorybrussels/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-coffee"></i> Último Café/Waffle</h4>
+<p>Desfrute em um café na Grand Place ou em uma área charmosa como Sablon.</p>
+</div>
+<h4 class="font-semibold mt-4 mb-2 text-lg text-red-700"><i class="fas fa-plane"></i> Tarde - Partida:</h4>
+<div class="activity-card">
+<h4><i class="fas fa-plane-departure"></i> Voo para o Brasil</h4>
+<p>Check-out do hotel.</p>
+<p>Dirija-se ao Aeroporto de Bruxelas (BRU) via trem (Airport City Express).</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Brussels+Airport/@50.9009986,4.4846734" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Aeroporto BRU</a>
+<p><strong>Voo:</strong> Bruxelas → Londres → Rio de Janeiro - Saída às 19:55.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="tab-content" id="bruges">
+<div class="day-section">
+<div class="day-header" onclick="toggleSection(this.parentElement)">
+<h2>📅 30 de Abril: BRUGES 🇧🇪 (Bate-volta de Bruxelas) 🚂</h2>
+<i class="fas fa-chevron-down toggle-icon"></i>
+</div>
+<div class="day-content">
+<h4 class="font-semibold mt-4 mb-2 text-lg text-purple-700"><i class="fas fa-train"></i> Transporte:</h4>
+<div class="activity-card">
+<h4><i class="fas fa-train"></i> Trem Bruxelas → Bruges</h4>
+<p><strong>Horário:</strong> Saia cedo (e.g., 8h-9h) (viagem ~1h).</p>
+<p><strong>Companhia:</strong> SNCB</p>
+<p><strong>Estações:</strong> Brussels Midi/Centraal/Nord → Brugge</p>
+<p><strong>Valor aprox.:</strong> <span class="btn btn-price btn-sm">~€18 (ida)</span> (Verificar promoções).</p>
+<a class="btn btn-web" href="https://www.belgiantrain.be/en" target="_blank"><i class="fas fa-globe mr-1"></i>SNCB Website</a>
+<a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Brugge+Station" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Estação Bruges</a>
+<p class="detail-item"><i class="fas fa-bus"></i> Da estação: Caminhe (15-20 min) ou pegue ônibus (linhas 1, 2, 6, 11, 12, etc.) para Markt.</p>
+</div>
+<h4 class="font-semibold mt-4 mb-2 text-lg text-purple-700"><i class="fas fa-shoe-prints"></i> Roteiro Sugerido:</h4>
+<div class="activity-card">
+<h4><i class="fas fa-gopuram"></i> Grote Markt &amp; Subida ao Belfort</h4>
+<p>Praça principal e subida ao Campanário. <span class="btn btn-price btn-sm">~€15 (Belfort)</span></p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Panorâmica da praça; vista do topo do Belfort.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Markt+Bruges" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Grote Markt</a>
+<a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Belfry+of+Bruges" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Belfort</a>
+<a class="btn btn-web" href="https://www.visitbruges.be/en/belfort-belfry" target="_blank"><i class="fas fa-globe mr-1"></i>Website Belfort</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/museabrugge/" target="_blank"><i class="fab fa-instagram mr-1"></i>Musea Brugge</a>
+<p class="curiosity">ℹ️ O Belfort tem 83m de altura e seu carrilhão toca melodias regularmente.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-landmark"></i> Praça Burg &amp; Basílica do Sangue Sagrado</h4>
+<p>Veja a Prefeitura gótica (Stadhuis) e a Basílica com a relíquia.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Fachada da Prefeitura; interior da Basílica Superior.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Burg+Square/@51.2087402,3.2269507" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Burg Square</a>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Basilica+of+the+Holy+Blood/@51.2083794,3.2266949" target="_blank"><i class="fas fa-church mr-1"></i>Basílica</a>
+<a class="btn btn-web" href="https://www.holyblood.com/" target="_blank"><i class="fas fa-globe mr-1"></i>Website Basílica</a>
+<p class="curiosity">ℹ️ A relíquia do Sangue Sagrado é exibida ao público em horários específicos.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-ship"></i> Passeio de Barco pelos Canais</h4>
+<p>Imperdível para ver a cidade de outra perspectiva. <span class="btn btn-price btn-sm">~€12-€15</span></p>
+<a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=boat+tour+bruges" target="_blank"><i class="fas fa-ship mr-1"></i>Pontos de Partida</a>
+<a class="btn btn-secondary" href="https://www.visitbruges.be/en/boat-trips" target="_blank"><i class="fas fa-info-circle mr-1"></i>Info</a>
+<p class="curiosity">ℹ️ Os barcos passam por baixo de pontes baixas e oferecem vistas únicas das fachadas traseiras das casas.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-church"></i> Igreja de Nossa Senhora</h4>
+<p>Veja a Madona de Michelangelo. <span class="btn btn-price btn-sm">~€8 (área do museu)</span></p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> A escultura da Madona; túmulos de Maria de Borgonha e Carlos, o Temerário.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Church+of+Our+Lady+Bruges" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.visitbruges.be/en/onze-lieve-vrouwekerk-church-of-our-lady" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<p class="curiosity">ℹ️ A torre da igreja (115.5m) é uma das mais altas estruturas de tijolos do mundo.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-hospital"></i> Sint-Janshospitaal</h4>
+<p>Hospital medieval com museu de arte (Hans Memling). <span class="btn btn-price btn-sm">~€12</span></p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Parc+de+Bruxelles/@50.8451571,4.3643677" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.visitbruges.be/en/sint-janshospitaal-saint-johns-hospital" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<p class="curiosity">ℹ️ Funcionou como hospital por séculos, cuidando de pobres, peregrinos e viajantes.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-home"></i> Begijnhof &amp; Lago do Amor (Minnewater)</h4>
+<p>Caminhe pelo oásis de paz do Begijnhof e relaxe perto do lago.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Casas brancas do Begijnhof; cisnes no Minnewater.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Begijnhof+Bruges" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Begijnhof</a>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Lake+of+Love/@51.2008793,3.2224212" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Minnewater</a>
+<p class="curiosity">ℹ️ As Beguinarias eram comunidades de mulheres religiosas leigas. A de Bruges foi fundada em 1245.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-beer"></i> Cervejaria De Halve Maan</h4>
+<p>Tour pela cervejaria ou degustação no bar. <span class="btn btn-price btn-sm">~€15 (Tour)</span></p>
+<a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=De+Halve+Maan+Brewery+Bruges" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.halvemaan.be/en" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/brouwerijdehalvemaan/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+<p class="curiosity">ℹ️ Famosa pela cerveja Brugse Zot. Possui um "cervejoduto" subterrâneo para transportar cerveja até a engarrafadora fora do centro.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-cookie"></i> Choco-Story Bruges</h4>
+<p>Museu do chocolate. <span class="btn btn-price btn-sm">~€13</span></p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Mont+des+Arts/@50.8423486,4.3571167" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://choco-story-brugge.be/en/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-wind"></i> Moinhos de Vento</h4>
+<p>Caminhe até a borda leste da cidade para ver os moinhos.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Windmills+Bruges" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Moinhos (Área)</a>
+<p class="curiosity">ℹ️ Originalmente parte das fortificações da cidade, alguns ainda funcionam ocasionalmente.</p>
+</div>
+<div class="activity-card restaurant-card">
+<h4><i class="fas fa-utensils"></i> Sugestões de Refeição/Pub (Bruges)</h4>
+<p><strong>De Garre:</strong> Bar escondido em um beco, famoso por sua cerveja forte. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Gravensteen/@51.0575025,3.7202628" target="_blank">[Mapa]</a></p>
+<p><strong>Cambrinus:</strong> Grande seleção de cervejas e comida de pub. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Great+Butchers'+Hall/@51.0559825,3.7223367" target="_blank">[Mapa]</a></p>
+<p><strong>That's Toast:</strong> Ótimo para brunch/almoço leve. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Patershol,+Ghent/@51.0587278,3.7201543" target="_blank">[Mapa]</a></p>
+<p><strong>Chez Albert:</strong> Famoso por waffles de Liège para levar. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Graffiti+Street,+Ghent/@51.0560126,3.7262386" target="_blank">[Mapa]</a></p>
+</div>
+<h4 class="font-semibold mt-4 mb-2 text-lg text-purple-700"><i class="fas fa-undo"></i> Retorno:</h4>
+<div class="activity-card">
+<h4><i class="fas fa-train"></i> Trem Bruges → Bruxelas</h4>
+<p>Retorne para a estação e pegue o trem de volta para Bruxelas.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="tab-content" id="ghent">
+<div class="day-section">
+<div class="day-header" onclick="toggleSection(this.parentElement)">
+<h2>📅 1º de Maio: GHENT 🇧🇪 (Bate-volta de Bruxelas) 🚂</h2>
+<i class="fas fa-chevron-down toggle-icon"></i>
+</div>
+<div class="day-content">
+<p class="small-note">1º de Maio é feriado. Verifique horários de atrações/transportes.</p>
+<h4 class="font-semibold mt-4 mb-2 text-lg text-teal-700"><i class="fas fa-train"></i> Transporte:</h4>
+<div class="activity-card">
+<h4><i class="fas fa-train"></i> Trem Bruxelas → Ghent</h4>
+<p><strong>Horário:</strong> Saia cedo (e.g., 9h-10h) (viagem ~30-40 min).</p>
+<p><strong>Companhia:</strong> SNCB</p>
+<p><strong>Estações:</strong> Brussels Midi/Centraal/Nord → Gent Sint-Pieters</p>
+<p><strong>Valor aprox.:</strong> <span class="btn btn-price btn-sm">~€12 (ida)</span> (Verificar promoções/tarifa feriado).</p>
+<a class="btn btn-web" href="https://www.belgiantrain.be/en" target="_blank"><i class="fas fa-globe mr-1"></i>SNCB Website</a>
+<a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Gent-Sint-Pieters+Station" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Estação Gent-Sint-Pieters</a>
+<p class="detail-item"><i class="fas fa-tram"></i> Da estação: Pegue o Tram Linha 1 (dir. Evergem/Wondelgem) para o centro (parada Korenmarkt ou Gravensteen).</p>
+</div>
+<h4 class="font-semibold mt-4 mb-2 text-lg text-teal-700"><i class="fas fa-shoe-prints"></i> Roteiro Sugerido:</h4>
+<div class="activity-card">
+<h4><i class="fas fa-chess-rook"></i> Castelo dos Condes (Gravensteen)</h4>
+<p>Explore o castelo medieval com tour de áudio. <span class="btn btn-price btn-sm">~€13</span></p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Vista do topo; pátio interno; fachada imponente.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Gravensteen+Ghent" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://gravensteen.stad.gent/en" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/visitgent/" target="_blank"><i class="fab fa-instagram mr-1"></i>Visit Ghent</a>
+<p class="curiosity">ℹ️ Construído no século XII, serviu como residência dos Condes de Flandres, tribunal e prisão.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-water"></i> Graslei e Korenlei &amp; St Michael's Bridge</h4>
+<p>Caminhe pelos cais históricos e admire a vista da Ponte de São Miguel.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Vista da ponte com as três torres (St Nicholas', Belfort, St Bavo's); reflexos no rio.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Graslei+and+Korenlei+Ghent" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Graslei/Korenlei</a>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/St+Michael's+Bridge/@51.0559675,3.7197017" target="_blank"><i class="fas fa-bridge mr-1"></i>St Michael's Bridge</a>
+<p class="curiosity">ℹ️ Graslei e Korenlei eram o porto medieval de Ghent e o centro do comércio de grãos.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-church"></i> Catedral de São Bavo &amp; Cordeiro Místico</h4>
+<p>Visite a catedral e veja a obra-prima de Van Eyck. <span class="btn btn-price btn-sm">~€16 (Cordeiro Místico)</span> (Reserve online!).</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> O retábulo do Cordeiro Místico (sem flash); o púlpito barroco.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=St+Bavo's+Cathedral+Ghent" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.sintbaafskathedraal.be/en/" target="_blank"><i class="fas fa-globe mr-1"></i>Website Catedral</a>
+<a class="btn btn-secondary" href="https://www.vaneyckwashere.be/en/practical-information" target="_blank"><i class="fas fa-ticket-alt mr-1"></i>Tickets Cordeiro</a>
+<p class="curiosity">ℹ️ O Retábulo de Ghent (Cordeiro Místico) é uma das obras de arte mais influentes e roubadas da história.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-bell"></i> Subida ao Campanário (Belfort)</h4>
+<p>Vistas panorâmicas da cidade. <span class="btn btn-price btn-sm">~€11</span></p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Vista da Catedral e da Igreja de São Nicolau.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Galeries+Royales+Saint-Hubert/@50.8489535,4.3533036" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://belfortgent.be/en/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<p class="curiosity">ℹ️ O Belfort simbolizava o poder e a independência da cidade na Idade Média.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-ship"></i> Passeio de Barco pelos Canais</h4>
+<p>Veja Ghent da água. <span class="btn btn-price btn-sm">~€9.50</span></p>
+<a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=boat+tour+ghent" target="_blank"><i class="fas fa-ship mr-1"></i>Partida Aprox.</a>
+<a class="btn btn-secondary" href="https://visit.gent.be/en/see-do/boat-trips-ghent" target="_blank"><i class="fas fa-info-circle mr-1"></i>Info</a>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-palette"></i> Explorar Patershol &amp; Werregarenstraatje</h4>
+<p>Perca-se nas ruelas medievais de Patershol e veja a viela de graffiti.</p>
+<p class="detail-item"><i class="fas fa-camera"></i> <strong>Dica de Foto:</strong> Ruas charmosas de Patershol; os murais na Werregarenstraatje.</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Patershol,+Ghent/@51.0587278,3.7201543" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Patershol</a>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Graffiti+Street,+Ghent/@51.0560126,3.7262386" target="_blank"><i class="fas fa-spray-can mr-1"></i>Graffiti Street</a>
+<p class="curiosity">ℹ️ Patershol era originalmente habitado por curtidores e hoje é um bairro boêmio com restaurantes.</p>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-chair"></i> Design Museum Gent</h4>
+<p>Museu de design moderno e contemporâneo. <span class="btn btn-price btn-sm">~€10</span></p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Manneken+Pis/@50.8449914,4.3495593" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.designmuseumgent.be/en/" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+<a class="btn btn-instagram" href="https://www.instagram.com/designmuseumgent/" target="_blank"><i class="fab fa-instagram mr-1"></i>Instagram</a>
+</div>
+<div class="activity-card">
+<h4><i class="fas fa-place-of-worship"></i> Abadia de São Pedro (Sint-Pietersabdij)</h4>
+<p>Visite a abadia histórica com jardins e exposições. <span class="btn btn-price btn-sm">~€8</span></p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Delirium+Cafe/@50.8483075,4.3524365" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Google Maps</a>
+<a class="btn btn-web" href="https://www.historischehuizen.stad.gent/en/sint-pietersabdij" target="_blank"><i class="fas fa-globe mr-1"></i>Website</a>
+</div>
+<div class="activity-card restaurant-card">
+<h4><i class="fas fa-utensils"></i> Sugestões de Refeição/Pub (Ghent)</h4>
+<p><strong>Max Ghent:</strong> Waffles e clássicos belgas. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/search/?api=1&amp;query=Max+Ghent" target="_blank">[Mapa]</a></p>
+<p><strong>Pakhuis (€€€):</strong> Brasserie impressionante. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/search/?api=1&amp;query=Pakhuis+Ghent" target="_blank">[Mapa]</a></p>
+<p><strong>De Dulle Griet:</strong> Bar famoso pela vasta seleção de cervejas e por pedir um sapato como depósito pelo copo especial Kwak. <a class="text-blue-600 hover:underline" href="https://www.google.com/maps/place/Sint-Michielsbrug/@51.0559918,3.7197411" target="_blank">[Mapa]</a></p>
+<p><strong>Comer Cuberdons (Narizes):</strong> Procure barracas vendendo o doce típico de Ghent.</p>
+</div>
+<h4 class="font-semibold mt-4 mb-2 text-lg text-teal-700"><i class="fas fa-undo"></i> Retorno:</h4>
+<div class="activity-card">
+<h4><i class="fas fa-train"></i> Retorno a Bruxelas</h4>
+<p>Pegue o Tram 1 de volta para a estação Gent Sint-Pieters e pegue o trem para Bruxelas.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="tab-content" id="retorno">
+<div class="day-section">
+<div class="day-header" onclick="toggleSection(this.parentElement)">
+<h2>📅 3 de Maio: Retorno ao Brasil ✈️🇧🇷</h2>
+<i class="fas fa-chevron-down toggle-icon"></i>
+</div>
+<div class="day-content">
+<p><strong>Manhã/Tarde:</strong> Últimas compras, check-out do hotel.</p>
+<p>Dirija-se ao Aeroporto de Bruxelas (BRU) com tempo de sobra (recomendado 3h antes do voo internacional).</p>
+<p><strong>Como chegar:</strong> Trem Airport City Express das estações Brussels Midi, Centraal ou Nord (~20 min).</p>
+<a class="btn btn-maps" href="https://www.google.com/maps/place/Brussels+Airport/@50.9009986,4.4846734" target="_blank"><i class="fas fa-map-marker-alt mr-1"></i>Aeroporto BRU</a>
+<a class="btn btn-secondary" href="https://www.belgiantrain.be/en/tickets-and-railcards/airports/brussels-airport" target="_blank"><i class="fas fa-train mr-1"></i>Info Trem Aeroporto</a>
+<p><strong>✈️ Voo Bruxelas → Londres → Rio de Janeiro:</strong> Saída às 19:55.</p>
+<p><strong>🗓️ Chegada prevista ao Brasil:</strong> 04 de Maio.</p>
+<p class="mt-4 font-semibold text-lg text-indigo-700">Fim da Viagem! Boa volta! 👋</p>
+</div>
+</div>
+</div>
+</main>
+<button id="scrollToTopBtn" onclick="scrollToTop()" title="Voltar ao topo"><i class="fas fa-arrow-up"></i></button>
+<footer class="text-center mt-8 text-gray-500 text-sm px-4">
+        Roteiro gerado interativamente. Preços são aproximados e podem mudar. Verifique sempre horários, preços e necessidade de reservas nos sites oficiais. Links do Instagram podem mudar. Informações de transporte são sugestões, use apps como Citymapper ou Google Maps para rotas em tempo real.
+    </footer>
+<script>
+        // Function to toggle accordion sections with smooth animation
+        function toggleSection(sectionElement) {
+            sectionElement.classList.toggle('active');
+        }
+
+        // Function to switch tabs with fade effect
+        function showTab(tabId) {
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            const selectedTabContent = document.getElementById(tabId);
+            if (selectedTabContent) {
+                setTimeout(() => {
+                     selectedTabContent.classList.add('active');
+                }, 10);
+            }
+
+            const selectedTabButton = document.querySelector(`.tab-button[onclick="showTab('${tabId}')"]`);
+            if (selectedTabButton) {
+                selectedTabButton.classList.add('active');
+            }
+        }
+
+         // Scroll to top button functionality
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+        window.onscroll = function() { scrollFunction(); };
+        function scrollFunction() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) { // Show later
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        }
+        function scrollToTop() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            showTab('info');
+            const infoTab = document.getElementById('info');
+            if (infoTab) {
+                 const firstInfoSection = infoTab.querySelector('.day-section');
+                 if (firstInfoSection && !firstInfoSection.classList.contains('active')) {
+                     // Starts active in HTML
+                 }
+            }
+        });
+    </script>
+</body>
+</html>
